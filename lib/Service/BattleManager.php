@@ -12,7 +12,7 @@ class BattleManager {
    * @param $ship1Quantity
    * @param Ship $ship2
    * @param $ship2Quantity
-   * @return array
+   * @return BattleResult
    */
   public function battle(Ship $ship1, $ship1Quantity, Ship $ship2, $ship2Quantity)
   {
@@ -23,13 +23,13 @@ class BattleManager {
 	$ship2UsedJediPowers = false;
 	while ($ship1Health > 0 && $ship2Health > 0) {
 	  // first, see if we have a rare Jedi hero event!
-	  if (didJediDestroyShipUsingTheForce($ship1)) {
+	  if ($this->didJediDestroyShipUsingTheForce($ship1)) {
 		$ship2Health = 0;
 		$ship1UsedJediPowers = true;
 
 		break;
 	  }
-	  if (didJediDestroyShipUsingTheForce($ship2)) {
+	  if ($this->didJediDestroyShipUsingTheForce($ship2)) {
 		$ship1Health = 0;
 		$ship2UsedJediPowers = true;
 
@@ -40,6 +40,9 @@ class BattleManager {
 	  $ship1Health = $ship1Health - ($ship2->getWeaponPower() * $ship2Quantity);
 	  $ship2Health = $ship2Health - ($ship1->getWeaponPower() * $ship1Quantity);
 	}
+
+	$ship1->setStrength($ship1Health);
+	$ship2->setStrength($ship2Health);
 
 	if ($ship1Health <= 0 && $ship2Health <= 0) {
 	  // they destroyed each other
@@ -56,10 +59,17 @@ class BattleManager {
 	  $usedJediPowers = $ship1UsedJediPowers;
 	}
 
-	return array(
-	  'winning_ship' => $winningShip,
-	  'losing_ship' => $losingShip,
-	  'used_jedi_powers' => $usedJediPowers,
-	);
+	return new BattleResult($usedJediPowers, $winningShip, $losingShip);
+  }
+
+  /**
+   * @param Ship $ship
+   * @return bool
+   */
+  private function didJediDestroyShipUsingTheForce(Ship $ship)
+  {
+	$jediHeroProbability = $ship->getJediFactor() / 100;
+
+	return mt_rand(1, 100) <= ($jediHeroProbability*100);
   }
 }
