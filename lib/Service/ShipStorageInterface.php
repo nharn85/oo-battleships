@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: nmacdougall
- * Date: 2017-02-23
- * Time: 1:49 PM
- */
+namespace Service;
+
 interface ShipStorageInterface {
   /**
    * Returns an array of ship data

@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: nmacdougall
- * Date: 2017-02-23
- * Time: 1:23 PM
- */
+namespace Service;
+
 class PdoShipStorage implements ShipStorageInterface
 {
   private $pdo;

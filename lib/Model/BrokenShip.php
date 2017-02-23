@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: nmacdougall
- * Date: 2017-02-22
- * Time: 3:14 PM
- */
+namespace Model;
+
 class BrokenShip extends AbstractShip {
   public function getJediFactor() {
     return 0;

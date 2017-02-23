@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: nmacdougall
- * Date: 2017-02-22
- * Time: 1:09 PM
- */
+namespace Service;
 
 class Container {
 

@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: nmacdougall
- * Date: 2017-02-22
- * Time: 1:51 PM
- */
+namespace Model;
+
 class RebelShip extends AbstractShip {
 
   public function getFavoriteJedi() {

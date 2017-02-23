@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: nmacdougall
- * Date: 2017-02-22
- * Time: 2:40 PM
- */
+namespace Model;
+
 abstract class AbstractShip {
   private $name;
 

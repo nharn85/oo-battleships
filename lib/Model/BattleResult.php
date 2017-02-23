@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: nmacdougall
- * Date: 2017-02-22
- * Time: 10:09 AM
- */
+namespace Model;
+
 class BattleResult {
 	private $usedJediPowers;
 	private $winningShip;
